@@ -57,12 +57,12 @@ echo ################
 
 ############# Command example
 
-/home/pp12825/tp01/gameoflifeparallel random 5000 5000 1000 1 0
-/home/pp12825/tp01/gameoflifeparallel random 5000 5000 1000 2 0
-/home/pp12825/tp01/gameoflifeparallel random 5000 5000 1000 4 0
-/home/pp12825/tp01/gameoflifeparallel random 5000 5000 1000 8 0
-/home/pp12825/tp01/gameoflifeparallel random 5000 5000 1000 16 0
-/home/pp12825/tp01/gameoflifeparallel random 5000 5000 1000 32 0
+/home/pp12825/tp01/gameoflife random 5000 5000 1000 1 0
+/home/pp12825/tp01/gameoflife random 5000 5000 1000 2 0
+/home/pp12825/tp01/gameoflife random 5000 5000 1000 4 0
+/home/pp12825/tp01/gameoflife random 5000 5000 1000 8 0
+/home/pp12825/tp01/gameoflife random 5000 5000 1000 16 0
+/home/pp12825/tp01/gameoflife random 5000 5000 1000 32 0
 
 ################
 
