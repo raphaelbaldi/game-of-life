@@ -13,7 +13,7 @@
 
 ################ Change these parameters according to your requisites
 
-#PBS -l nodes=1:ppn=16:cluster-Atlantica,walltime=6:00:00
+#PBS -l nodes=1:ppn=16:cluster-Atlantica,walltime=3:00:00
 
 ################ Where:
 ################ nodes = number of nodes requested
