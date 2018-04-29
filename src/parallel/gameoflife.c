@@ -37,12 +37,10 @@ void evolve(unsigned char ** univ, int w, int h) {
     }
 
     // Nested for converted to expanded for in order to support nested loop
-    #pragma omp parallel for
+    #pragma omp parallel for shared(univ, new)
     for (int xy = 0; xy < w * h; ++xy) {
         int x = xy / h;
         int y = xy % h;
-
-        //printf("Thread: rank=%d, x=%d, y=%d\n", omp_get_thread_num(), x, y);
 
         int n = 0;
         for (int y1 = y - 1; y1 <= y + 1; y1++) {
@@ -64,7 +62,7 @@ void evolve(unsigned char ** univ, int w, int h) {
         new[y][x] = (n == 3 || (n == 2 && univ[y][x]));
     }
 
-    #pragma omp parallel for
+    #pragma omp parallel for shared(univ, new)
     for (int xy = 0; xy < w * h; ++xy) {
         int x = xy / h;
         int y = xy % h;
@@ -86,6 +84,7 @@ void game(int w, int h, unsigned char** univ, int cycles, int print_result, int 
         c++;
     }
     stoptime = omp_get_wtime();
+
     // Should we print the universe when simulation is over?
     if (1 == print_result) {
         show(univ, w, h);
