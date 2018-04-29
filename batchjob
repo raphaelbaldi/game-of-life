@@ -13,7 +13,7 @@
 
 ################ Change these parameters according to your requisites
 
-#PBS -l nodes=1:ppn=32:cluster-Atlantica,walltime=3:00:00
+#PBS -l nodes=1:ppn=16:cluster-Atlantica,walltime=6:00:00
 
 ################ Where:
 ################ nodes = number of nodes requested
@@ -57,12 +57,24 @@ echo ################
 
 ############# Command example
 
-/home/pp12825/tp01/gameoflife random 5000 5000 1000 1 0
-/home/pp12825/tp01/gameoflife random 5000 5000 1000 2 0
-/home/pp12825/tp01/gameoflife random 5000 5000 1000 4 0
-/home/pp12825/tp01/gameoflife random 5000 5000 1000 8 0
-/home/pp12825/tp01/gameoflife random 5000 5000 1000 16 0
-/home/pp12825/tp01/gameoflife random 5000 5000 1000 32 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 1 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 1 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 1 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 2 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 2 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 2 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 4 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 4 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 4 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 8 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 8 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 8 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 16 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 16 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 16 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 32 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 32 0
+/home/pp12825/tp01/gameoflife random 5000 5000 100 32 0
 
 ################
 
