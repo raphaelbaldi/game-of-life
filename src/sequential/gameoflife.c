@@ -4,6 +4,8 @@
 #include <time.h>
 #include <string.h>
 
+unsigned char** new = NULL;
+
 void show(unsigned char** univ, int w, int h) {
     system("clear");
 	printf("\033[H");
@@ -16,13 +18,26 @@ void show(unsigned char** univ, int w, int h) {
 	fflush(stdout);
 }
 
+unsigned char** empty_univ(int w, int h) {
+    unsigned char** univ = (unsigned char **) malloc(h * sizeof(unsigned char*));
+    for(int i = 0; i < h; i++) {
+        univ[i] = (unsigned char *)malloc(w * sizeof(unsigned char));
+        for (int j = 0; j < w; j++) {
+            univ[i][j] = 0;
+        }
+    }
+
+    return univ;
+}
+
 void evolve(unsigned char ** univ, int w, int h) {
-    unsigned char new[h][w];
+    if (NULL == new) {
+        new = empty_univ(w, h);
+    }
 
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
 
-            // Can be paralelized completely (evolution)
             int n = 0;
             for (int y1 = y - 1; y1 <= y + 1; y1++) {
                 for (int x1 = x - 1; x1 <= x + 1; x1++) {
@@ -45,7 +60,6 @@ void evolve(unsigned char ** univ, int w, int h) {
         }
     }
 
-    // Can be paralelized completely (copy)
     for (int y = 0; y < h; y++) {
         for (int x = 0; x < w; x++) {
             univ[y][x] = new[y][x];
@@ -53,7 +67,7 @@ void evolve(unsigned char ** univ, int w, int h) {
     }
 }
 
-void game(int w, int h, unsigned char** univ, int cycles, int display_timer) {
+void game(int w, int h, unsigned char** univ, int cycles, int print_result, int display_timer) {
     int c = 0;
     while (c < cycles) {
         if (display_timer > 0) {
@@ -63,21 +77,11 @@ void game(int w, int h, unsigned char** univ, int cycles, int display_timer) {
         evolve(univ, w, h);
         c++;
     }
-    // Always print the universe when simulation is over
-    show(univ, w, h);
-    printf("Simulation completed after %d cycles.\n\n", cycles);
-}
-
-unsigned char** empty_univ(int w, int h) {
-    unsigned char** univ = (unsigned char **) malloc(h * sizeof(unsigned char*));
-    for(int i = 0; i < h; i++) {
-        univ[i] = (unsigned char *)malloc(w * sizeof(unsigned char));
-        for (int j = 0; j < w; j++) {
-            univ[i][j] = 0;
-        }
+    // Should we print the universe when simulation is over?
+    if (1 == print_result) {
+        show(univ, w, h);
     }
-
-    return univ;
+    printf("Simulation completed after %d cycles.\n\n", cycles);
 }
 
 unsigned char** random_univ(int w, int h) {
@@ -139,7 +143,7 @@ int main(int c, char **v) {
         return -1;
     }
 
-    int w = 0, h = 0, cycles = 0, display_timer = 0;
+    int w = 0, h = 0, cycles = 10, display_timer = 0, print_result = 0, num_threads = 0;
     unsigned char** univ;
 
     if (0 == strcmp(v[1], "random")) {
@@ -148,7 +152,9 @@ int main(int c, char **v) {
         if (c > 2) w = atoi(v[2]);
         if (c > 3) h = atoi(v[3]);
         if (c > 4) cycles = atoi(v[4]);
-        if (c > 5) display_timer = atoi(v[5]);
+        if (c > 5) num_threads = atoi(v[5]);
+        if (c > 6) print_result = atoi(v[6]);
+        if (c > 7) display_timer = atoi(v[7]);
 
         if (w <= 0) w = 30;
         if (h <= 0) h = 30;
@@ -168,15 +174,23 @@ int main(int c, char **v) {
         }
 
         if (c > 3) cycles = atoi(v[3]);
-        if (c > 4) display_timer = atoi(v[4]);
+        if (c > 4) num_threads = atoi(v[4]);
+        if (c > 5) print_result = atoi(v[5]);
+        if (c > 6) display_timer = atoi(v[6]);
     } else {
         printf("Missing arguments.\n");
         return -1;
     }
 
     if (cycles <= 0) cycles = 10;
+    if (display_timer < 0) display_timer = 0;
 
-    game(w, h, univ, cycles, display_timer);
+    if (print_result < 0) print_result = 0;
+    else if (print_result > 1) print_result = 1;
+
+    if (num_threads <= 0) num_threads = 1;
+
+    game(w, h, univ, cycles, print_result, display_timer);
 
     return 0;
 }
