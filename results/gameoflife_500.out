@@ -1,0 +1,99 @@
+--------------------------------------
+Running PBS prologue script
+
+Checking all prerequisites...
+Done.
+
+Running on host atlantica16
+
+Initial Time is Sun Apr 29 18:29:08 BRT 2018
+
+Directory is /home/pp12825/tp01
+
+This jobs runs on the following nodes:
+atlantica16
+
+JOB_ID:
+104771
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 1 threads. Environment size: width=500, height=500. Execution time: 4.54055 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 1 threads. Environment size: width=500, height=500. Execution time: 4.51236 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 1 threads. Environment size: width=500, height=500. Execution time: 4.49666 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 2 threads. Environment size: width=500, height=500. Execution time: 2.29320 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 2 threads. Environment size: width=500, height=500. Execution time: 2.32630 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 2 threads. Environment size: width=500, height=500. Execution time: 2.33950 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 4 threads. Environment size: width=500, height=500. Execution time: 1.18630 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 4 threads. Environment size: width=500, height=500. Execution time: 1.16546 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 4 threads. Environment size: width=500, height=500. Execution time: 1.20635 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 8 threads. Environment size: width=500, height=500. Execution time: 1.07974 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 8 threads. Environment size: width=500, height=500. Execution time: 0.63820 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 8 threads. Environment size: width=500, height=500. Execution time: 0.68074 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 16 threads. Environment size: width=500, height=500. Execution time: 0.63081 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 16 threads. Environment size: width=500, height=500. Execution time: 0.64170 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 16 threads. Environment size: width=500, height=500. Execution time: 0.64998 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 32 threads. Environment size: width=500, height=500. Execution time: 0.80559 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 32 threads. Environment size: width=500, height=500. Execution time: 0.79715 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 32 threads. Environment size: width=500, height=500. Execution time: 0.80243 seconds.
+
+Final Time is Sun Apr 29 18:29:40 BRT 2018
+
+--------------------------------------
+Running PBS epilogue.user script
+
+End of PBS epilogue.user script
+
+--------------------------------------
+Running PBS epilogue script
+
+Disabling access of user pp12825 on the batch nodes
+Doing node atlantica16
+
+ -- Killing all stale user  processes... done.
+ -- Cleaning-up any shmemory segments... done.
+
+Done.
+
+Resources used:
+
+ -- CPU TIME     = 00:00:34
+
+ -- MEMORY       = 2760kb
+
+ -- VIRTUAL MEM  = 63324kb
+
+ -- ELAPSED TIME = 00:00:33
