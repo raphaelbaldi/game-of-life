@@ -1,0 +1,163 @@
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 1 threads. Environment size: width=50, height=50. Execution time: 0.04519 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 1 threads. Environment size: width=50, height=50. Execution time: 0.04545 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 1 threads. Environment size: width=50, height=50. Execution time: 0.04638 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 2 threads. Environment size: width=50, height=50. Execution time: 0.02671 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 2 threads. Environment size: width=50, height=50. Execution time: 0.02725 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 2 threads. Environment size: width=50, height=50. Execution time: 0.02820 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 4 threads. Environment size: width=50, height=50. Execution time: 0.01668 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 4 threads. Environment size: width=50, height=50. Execution time: 0.01635 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 4 threads. Environment size: width=50, height=50. Execution time: 0.01582 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 8 threads. Environment size: width=50, height=50. Execution time: 0.01258 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 8 threads. Environment size: width=50, height=50. Execution time: 0.01171 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 8 threads. Environment size: width=50, height=50. Execution time: 0.01225 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 16 threads. Environment size: width=50, height=50. Execution time: 0.01066 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 16 threads. Environment size: width=50, height=50. Execution time: 0.00955 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 16 threads. Environment size: width=50, height=50. Execution time: 0.01155 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 1 threads. Environment size: width=500, height=500. Execution time: 4.71432 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 1 threads. Environment size: width=500, height=500. Execution time: 4.71862 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 1 threads. Environment size: width=500, height=500. Execution time: 4.78827 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 2 threads. Environment size: width=500, height=500. Execution time: 2.53917 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 2 threads. Environment size: width=500, height=500. Execution time: 2.40606 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 2 threads. Environment size: width=500, height=500. Execution time: 2.43806 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 4 threads. Environment size: width=500, height=500. Execution time: 1.26855 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 4 threads. Environment size: width=500, height=500. Execution time: 1.25701 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 4 threads. Environment size: width=500, height=500. Execution time: 1.23504 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 8 threads. Environment size: width=500, height=500. Execution time: 0.66592 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 8 threads. Environment size: width=500, height=500. Execution time: 0.67690 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 8 threads. Environment size: width=500, height=500. Execution time: 0.66297 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 16 threads. Environment size: width=500, height=500. Execution time: 0.65283 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 16 threads. Environment size: width=500, height=500. Execution time: 0.65132 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 16 threads. Environment size: width=500, height=500. Execution time: 0.65743 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 1 threads. Environment size: width=5000, height=5000. Execution time: 530.50257 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 1 threads. Environment size: width=5000, height=5000. Execution time: 528.04512 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 1 threads. Environment size: width=5000, height=5000. Execution time: 528.55555 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 2 threads. Environment size: width=5000, height=5000. Execution time: 268.35522 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 2 threads. Environment size: width=5000, height=5000. Execution time: 266.95837 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 2 threads. Environment size: width=5000, height=5000. Execution time: 266.38844 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 4 threads. Environment size: width=5000, height=5000. Execution time: 133.92867 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 4 threads. Environment size: width=5000, height=5000. Execution time: 133.85820 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 4 threads. Environment size: width=5000, height=5000. Execution time: 134.01440 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 8 threads. Environment size: width=5000, height=5000. Execution time: 70.48312 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 8 threads. Environment size: width=5000, height=5000. Execution time: 70.94893 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 8 threads. Environment size: width=5000, height=5000. Execution time: 70.48102 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 16 threads. Environment size: width=5000, height=5000. Execution time: 66.47092 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 16 threads. Environment size: width=5000, height=5000. Execution time: 66.21716 seconds.
+
+Using randomly generated pattern.
+Simulation completed after 100 cycles using 16 threads. Environment size: width=5000, height=5000. Execution time: 65.98507 seconds.
+
+Final Time is Sun Apr 29 20:37:07 BRT 2018
+
+--------------------------------------
+Running PBS epilogue.user script
+
+End of PBS epilogue.user script
+
+--------------------------------------
+Running PBS epilogue script
+
+Disabling access of user pp12825 on the batch nodes
+Doing node grad01
+
+ -- Killing all stale user  processes... done.
+ -- Cleaning-up any shmemory segments... done.
+
+Done.
+
+Resources used:
+
+ -- CPU TIME     = 02:53:49
+
+ -- MEMORY       = 51140kb
+
+ -- VIRTUAL MEM  = 193780kb
+
+ -- ELAPSED TIME = 00:55:32
+
