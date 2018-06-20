@@ -1,3 +1,4 @@
 src/sequential/gameoflife
 src/parallel/gameoflife
+src/mpi/gameoflife
 *~

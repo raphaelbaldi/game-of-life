@@ -159,38 +159,41 @@ void run_master(int c, char** v) {
   temp[0] = w;
   temp[1] = cycles;
   int partitions = proc_n - 1;
-  for (int i = 0; i < partitions; i++) {
-    temp[2] = (h * i) / partitions;
-    temp[3] = (h * (i + 1)) / partitions;
-    if (i == partitions - 1 || temp[3] > h) {
-      temp[3] = h;
+  int lines_per_partition = h / partitions;
+  printf("Partitions=%d, LinesPerPartition=%d\n\n", partitions, lines_per_partition);
+  int current_line = 0;
+  for (int i = 1; i < proc_n; i++) {
+    temp[2] = current_line;
+    current_line += lines_per_partition;
+    if (current_line > h || i == proc_n - 1) {
+      current_line = h;
     }
+    temp[3] = current_line;
+
+    printf("Partition=%d, FirstLine=%d, LastLine=%d, Size=%d, ArrayEnd=%d, SendEnd=%d\n", i, temp[2], temp[3], (temp[3] - temp[2]) * w, h * w, temp[2] * w + ((temp[3] - temp[2]) * w));
     // FIRST MESSAGE
     //  temp[0] = width of each line
     //  temp[1] = cycles to run
     //  temp[2] = start line the slave will get
     //  temp[3] = last line the slave will get
-    MPI_Send(temp, 4, MPI_INT, i + 1, tag, MPI_COMM_WORLD);
+    MPI_Send(temp, 4, MPI_INT, i, tag, MPI_COMM_WORLD);
 
     // SECOND MESSAGE
     //  partition
-    MPI_Send(univ + temp[2] * w, (temp[3] - temp[2]) * w, MPI_CHAR, i + 1, tag, MPI_COMM_WORLD);
+    MPI_Send(univ + temp[2] * w, (temp[3] - temp[2]) * w, MPI_CHAR, i, tag, MPI_COMM_WORLD);
   }
 
   MPI_Status status; /* MPI message status */
 
   // Receive data
-  for (int i = 0; i < partitions; i++) {
-    int initial_line = (w * i) / partitions;
-    int delta_lines = (w * (i + 1)) / partitions;
-    if (temp[3] > h) {
-      delta_lines = h;
+  current_line = 0;
+  for (int i = 1; i < proc_n; i++) {
+    int initial_line = current_line;
+    current_line += lines_per_partition;
+    if (current_line > h || i == proc_n - 1) {
+      current_line = h;
     }
-    delta_lines -= initial_line;
-
-    // SECOND MESSAGE
-    //  partition
-    MPI_Recv(univ + initial_line * w, delta_lines * w, MPI_CHAR, i + 1, tag, MPI_COMM_WORLD, &status);
+    MPI_Recv(univ + initial_line * w, (current_line - initial_line) * w, MPI_CHAR, i, tag, MPI_COMM_WORLD, &status);
   }
 
   // Display the final result
@@ -205,11 +208,10 @@ void run_slave() {
 
   MPI_Recv(universe_data, 4, MPI_INT, 0, tag, MPI_COMM_WORLD, &status);
   // Alocate two additional lines
-  int h_tot = universe_data[3] - universe_data[2] + 2;
-  int h = h_tot - 2;
+  int h = universe_data[3] - universe_data[2];
   int w = universe_data[0];
   int cycles = universe_data[1];
-  unsigned char* local_univ = (unsigned char *)malloc (h * w * sizeof(unsigned char));
+  unsigned char* local_univ = (unsigned char *)malloc ((h + 2) * w * sizeof(unsigned char));
   for (int i = 0; i < h * w; ++i) {
     local_univ[i] = 0;
   }
@@ -244,12 +246,12 @@ void run_slave() {
       MPI_Recv(local_univ + (h + 1) * w, w, MPI_CHAR, my_rank + 1, tag, MPI_COMM_WORLD, &status);
     } else {
       // My last line should be empty
-      for (int i = (h + 1) * w; i < h_tot * w; ++i) {
+      for (int i = (h + 1) * w; i < (h + 2) * w; ++i) {
         local_univ[i] = 0;
       }
     }
 
-    evolve(local_univ, w, h_tot);
+    evolve(local_univ, w, (h + 2));
     ++c;
   }
 
