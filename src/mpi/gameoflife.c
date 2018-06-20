@@ -30,12 +30,12 @@ unsigned char* empty_univ(int w, int h) {
   return univ;
 }
 
-void evolve(unsigned char* univ, int w, int h, int lastLine) {
+void evolve(unsigned char* univ, int w, int h) {
   if (NULL == new) {
     new = empty_univ(w, h);
   }
 
-  for (int y = 1; y < lastLine; ++y) {
+  for (int y = 0; y < h; ++y) {
     for (int x = 0; x < w; ++x) {
       int n = 0;
       for (int y1 = y - 1; y1 <= y + 1; ++y1) {
@@ -217,7 +217,6 @@ void run_slave() {
   // Start wrting at the second line
   MPI_Recv(local_univ + w, h * w, MPI_CHAR, 0, tag, MPI_COMM_WORLD, &status);
 
-  //printf("[%d] Process got {width=%d, cycles=%d, start_line=%d, end_line=%d}\n", my_rank, w, cycles, universe_data[2], universe_data[3]);
   int c = 0;
   while (c < cycles) {
     if (my_rank > 1) {
@@ -250,7 +249,7 @@ void run_slave() {
       }
     }
 
-    evolve(local_univ, w, h_tot, h_tot - 1);
+    evolve(local_univ, w, h_tot);
     ++c;
   }
 
