@@ -160,9 +160,9 @@ void run_master(int c, char** v) {
   temp[1] = cycles;
   int partitions = proc_n - 1;
   for (int i = 0; i < partitions; i++) {
-    temp[2] = (w * i) / partitions;
-    temp[3] = (w * (i + 1)) / partitions;
-    if (temp[3] > h) {
+    temp[2] = (h * i) / partitions;
+    temp[3] = (h * (i + 1)) / partitions;
+    if (i == partitions - 1 || temp[3] > h) {
       temp[3] = h;
     }
     // FIRST MESSAGE
