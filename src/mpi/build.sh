@@ -1,1 +1,1 @@
-gcc -std=c99 -Wall gameoflife.c -o gameoflife -fopenmp
+mpicc -std=c99 -Wall gameoflife.c -o gameoflife
