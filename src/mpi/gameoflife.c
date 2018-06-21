@@ -111,7 +111,7 @@ unsigned char* read_from_file(char* filename, int* w, int* h) {
 }
 
 void run_master(int c, char** v) {
-  int w = 0, h = 0, cycles = 10, display_timer = 0, print_result = 0;
+  int w = 0, h = 0, cycles = 10, print_result = 0;
   unsigned char* univ;
 
   if (0 == strcmp(v[1], "random")) {
@@ -121,7 +121,6 @@ void run_master(int c, char** v) {
     if (c > 3) h = atoi(v[3]);
     if (c > 4) cycles = atoi(v[4]);
     if (c > 5) print_result = atoi(v[5]);
-    if (c > 6) display_timer = atoi(v[6]);
 
     if (w <= 0) w = 30;
     if (h <= 0) h = 30;
@@ -142,14 +141,12 @@ void run_master(int c, char** v) {
 
     if (c > 3) cycles = atoi(v[3]);
     if (c > 4) print_result = atoi(v[4]);
-    if (c > 5) display_timer = atoi(v[5]);
   } else {
     printf("Missing arguments.\n");
     return;
   }
 
   if (cycles <= 0) cycles = 10;
-  if (display_timer < 0) display_timer = 0;
 
   if (print_result < 0) print_result = 0;
   else if (print_result > 1) print_result = 1;
@@ -200,7 +197,9 @@ void run_master(int c, char** v) {
   t2 = MPI_Wtime();
 
   // Display the final result
-  show(univ, w, h);
+  if (print_result) {
+    show(univ, w, h);
+  }
 
   printf("Simulation completed in [%f] after %d cycles.\n\n", t2 - t1, cycles);
 }
