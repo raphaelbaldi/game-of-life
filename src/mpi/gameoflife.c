@@ -10,6 +10,7 @@ int my_rank;  /* Process identifier */
 int proc_n;   /* # of running processes */
 unsigned char* new = NULL;
 
+// Displays the board
 void show(unsigned char* univ, int w, int h) {
   system("clear");
 	printf("\033[H");
@@ -22,6 +23,7 @@ void show(unsigned char* univ, int w, int h) {
 	fflush(stdout);
 }
 
+// Crate an empty board with size w x h
 unsigned char* empty_univ(int w, int h) {
   unsigned char* univ = (unsigned char*) malloc(w * h * sizeof(unsigned char));
   for(int xy = 0; xy < w * h; ++xy) {
@@ -30,6 +32,7 @@ unsigned char* empty_univ(int w, int h) {
   return univ;
 }
 
+// Advance a step on the simulation
 void evolve(unsigned char* univ, int w, int h) {
   if (NULL == new) {
     new = empty_univ(w, h);
@@ -59,6 +62,7 @@ void evolve(unsigned char* univ, int w, int h) {
   }
 }
 
+// Generate a random board
 unsigned char* random_univ(int w, int h) {
   unsigned char* univ = empty_univ(w, h);
 
@@ -74,6 +78,9 @@ unsigned char* random_univ(int w, int h) {
   return univ;
 }
 
+// Read the board from a file.
+// First line describes the size of the board
+// Subsequential lines contain each of the lines of the board to play
 unsigned char* read_from_file(char* filename, int* w, int* h) {
   FILE* file = fopen(filename, "r");
   char line[1024];
@@ -106,7 +113,6 @@ unsigned char* read_from_file(char* filename, int* w, int* h) {
   }
 
   fclose(file);
-
   return univ;
 }
 
@@ -114,6 +120,7 @@ void run_master(int c, char** v) {
   int w = 0, h = 0, cycles = 10, print_result = 0;
   unsigned char* univ;
 
+  // Decide if we're running the game from a file or generating it randomly
   if (0 == strcmp(v[1], "random")) {
     printf("Using randomly generated pattern.\n");
 
@@ -159,7 +166,7 @@ void run_master(int c, char** v) {
   temp[1] = cycles;
   int partitions = proc_n - 1;
   int lines_per_partition = h / partitions;
-  printf("Partitions=%d, LinesPerPartition=%d\n\n", partitions, lines_per_partition);
+
   int current_line = 0;
   for (int i = 1; i < proc_n; i++) {
     temp[2] = current_line;
@@ -169,7 +176,6 @@ void run_master(int c, char** v) {
     }
     temp[3] = current_line;
 
-    printf("Partition=%d, FirstLine=%d, LastLine=%d, Size=%d, ArrayEnd=%d, SendEnd=%d\n", i, temp[2], temp[3], (temp[3] - temp[2]) * w, h * w, temp[2] * w + ((temp[3] - temp[2]) * w));
     // FIRST MESSAGE
     //  temp[0] = width of each line
     //  temp[1] = cycles to run
@@ -184,7 +190,7 @@ void run_master(int c, char** v) {
 
   MPI_Status status; /* MPI message status */
 
-  // Receive data
+  // Receive data from all nodes
   current_line = 0;
   for (int i = 1; i < proc_n; i++) {
     int initial_line = current_line;
@@ -209,6 +215,7 @@ void run_slave() {
   MPI_Status status; /* MPI message status */
 
   MPI_Recv(universe_data, 4, MPI_INT, 0, tag, MPI_COMM_WORLD, &status);
+
   // Alocate two additional lines
   int h = universe_data[3] - universe_data[2];
   int w = universe_data[0];
@@ -237,7 +244,7 @@ void run_slave() {
       // Receive from up
       MPI_Recv(local_univ, w, MPI_CHAR, my_rank - 1, tag, MPI_COMM_WORLD, &status);
     } else {
-      // My first line should be empty
+      // My first line should be empty if I'll not get it from up
       for (int i = 0; i < w; ++i) {
         local_univ[i] = 0;
       }
@@ -247,12 +254,13 @@ void run_slave() {
       // Receive from down
       MPI_Recv(local_univ + (h + 1) * w, w, MPI_CHAR, my_rank + 1, tag, MPI_COMM_WORLD, &status);
     } else {
-      // My last line should be empty
+      // My last line should be empty, if I'll not get it from down
       for (int i = (h + 1) * w; i < (h + 2) * w; ++i) {
         local_univ[i] = 0;
       }
     }
 
+    // Got all data the slave needs, run the evolution
     evolve(local_univ, w, (h + 2));
     ++c;
   }
