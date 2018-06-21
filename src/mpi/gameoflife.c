@@ -155,6 +155,8 @@ void run_master(int c, char** v) {
   else if (print_result > 1) print_result = 1;
 
   // Partition the dataset and send to all nodes
+  double t1,t2;
+  t1 = MPI_Wtime();
   int temp[4];
   temp[0] = w;
   temp[1] = cycles;
@@ -195,11 +197,12 @@ void run_master(int c, char** v) {
     }
     MPI_Recv(univ + initial_line * w, (current_line - initial_line) * w, MPI_CHAR, i, tag, MPI_COMM_WORLD, &status);
   }
+  t2 = MPI_Wtime();
 
   // Display the final result
   show(univ, w, h);
 
-  printf("Simulation completed after %d cycles.\n\n", cycles);
+  printf("Simulation completed in [%f] after %d cycles.\n\n", t2 - t1, cycles);
 }
 
 void run_slave() {
